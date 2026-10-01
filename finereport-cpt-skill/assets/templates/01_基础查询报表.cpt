@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WorkBook xmlVersion="20170720" releaseVersion="11.0.0">
+<TableDataMap>
+<TableData name="ds1" class="com.fr.data.impl.DBTableData">
+<Parameters/>
+<Attributes maxMemRowCount="-1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[FRDemo]]></DatabaseName>
+</Connection>
+<Query>
+<![CDATA[select * from 销量]]></Query>
+<PageQuery>
+<![CDATA[]]></PageQuery>
+</TableData>
+</TableDataMap>
+<Report class="com.fr.report.worksheet.WorkSheet" name="sheet1">
+<ReportPageAttr>
+<HR/>
+<FR/>
+<HC/>
+<FC/>
+</ReportPageAttr>
+<ColumnPrivilegeControl/>
+<RowPrivilegeControl/>
+<RowHeight defaultValue="723900">
+<![CDATA[914400,990600,723900,723900,723900,723900,723900,723900,723900,723900,723900]]></RowHeight>
+<ColumnWidth defaultValue="2743200">
+<![CDATA[2995748,3413760,3553097,2743200,2743200,2743200,2743200,2743200,2743200,2743200,2743200]]></ColumnWidth>
+<CellElementList>
+<C c="0" r="0" s="0">
+<O>
+<![CDATA[地区]]></O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="1" r="0" s="0">
+<O>
+<![CDATA[销售员]]></O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="2" r="0" s="0">
+<O>
+<![CDATA[销量]]></O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="3" r="0" s="0">
+<O><![CDATA[记录数]]></O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="0" r="1" s="1">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="地区"/>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand dir="0"/>
+</C>
+<C c="1" r="1" s="1">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="销售员"/>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand dir="0"/>
+</C>
+<C c="2" r="1" s="1">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="销量"/>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand dir="0"/>
+</C>
+<C c="3" r="1" s="1">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="销售员"/>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN><![CDATA[com.fr.data.util.function.CountFunction]]></FN>
+</RG>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand dir="0"/>
+</C>
+</CellElementList>
+<ReportAttrSet>
+<ReportSettings headerHeight="0" footerHeight="0">
+<PaperSetting/>
+<FollowingTheme background="false"/>
+<Background name="ColorBackground">
+<color>
+<FineColor color="-1" hor="-1" ver="-1"/>
+</color>
+</Background>
+</ReportSettings>
+</ReportAttrSet>
+<PrivilegeControl/>
+</Report>
+<ReportParameterAttr>
+<Attributes showWindow="true" delayPlaying="true" windowPosition="1" align="0" useParamsTemplate="true" currentIndex="0"/>
+<PWTitle>
+<![CDATA[参数]]></PWTitle>
+<Parameter>
+<Attributes name="地区"/>
+<O><![CDATA[华东]]></O>
+</Parameter>
+</ReportParameterAttr>
+<StyleList>
+<Style style_name="Head" full="true" horizontal_alignment="0" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="ImageBackground" layout="2">
+<FineImage fm="png">
+<IM>
+<![CDATA[!Q"h"s+sQI7h#eD$31&+%7s)Y;?-[t%fcS0'F4mC!!&3S\C(?W!/X985u`*!mF8rZ!FZ[mdJ
+No=a%1@h_DK4?Th+3iLAPnbcJn3*eJG^HS,cRZlN#j-R0V*W4Fed@!AlMATS[po:!<]AQ''&q
+S!*(c/johW?rq]AB?Wn:%l"K74Fl&bsGYo0\N:_i;F8q<r*qCr#N@^/-F5ZK?G@ffUuGFT;=.
+TZKo!NNm.OB:@7P:"i\!!!!j78?7R6=>B~
+]]></IM>
+</FineImage>
+</Background>
+<Border>
+<Top style="1">
+<color>
+<FineColor color="-6697729" hor="-1" ver="-1"/>
+</color>
+</Top>
+<Bottom style="1">
+<color>
+<FineColor color="-6697729" hor="-1" ver="-1"/>
+</color>
+</Bottom>
+<Left style="1">
+<color>
+<FineColor color="-6697729" hor="-1" ver="-1"/>
+</color>
+</Left>
+<Right style="1">
+<color>
+<FineColor color="-6697729" hor="-1" ver="-1"/>
+</color>
+</Right>
+</Border>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="微软雅黑" style="0" size="80"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1">
+<color>
+<FineColor color="-6697729" hor="-1" ver="-1"/>
+</color>
+</Top>
+<Bottom style="1">
+<color>
+<FineColor color="-6697729" hor="-1" ver="-1"/>
+</color>
+</Bottom>
+<Left style="1">
+<color>
+<FineColor color="-6697729" hor="-1" ver="-1"/>
+</color>
+</Left>
+<Right style="1">
+<color>
+<FineColor color="-6697729" hor="-1" ver="-1"/>
+</color>
+</Right>
+</Border>
+</Style>
+</StyleList>
+<DesignerVersion DesignerVersion="LAA"/>
+<PreviewType PreviewType="0"/>
+<TemplateThemeAttrMark class="com.fr.base.iofile.attr.TemplateThemeAttrMark">
+<TemplateThemeAttrMark name="兼容主题" dark="false"/>
+</TemplateThemeAttrMark>
+<StrategyConfigsAttr class="com.fr.esd.core.strategy.persistence.StrategyConfigsAttr">
+<StrategyConfigs/>
+</StrategyConfigsAttr>
+<TemplateIdAttMark class="com.fr.base.iofile.attr.TemplateIdAttrMark">
+<TemplateIdAttMark TemplateId="374f508d-7d73-44f2-a174-ccde2a1c2a5f"/>
+</TemplateIdAttMark>
+<TemplateCloudInfoAttrMark class="com.fr.plugin.cloud.analytics.attr.TemplateInfoAttrMark" pluginID="com.fr.plugin.cloud.analytics.v11" plugin-version="3.0.0.20211027">
+<TemplateCloudInfoAttrMark createTime="1632454875474"/>
+</TemplateCloudInfoAttrMark>
+</WorkBook>

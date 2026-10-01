@@ -1,0 +1,47 @@
+{
+  "meta": {
+    "name": "out_02_参数联动",
+    "title": "参数联动：多参数 + 参数面板控件（下拉框/单选组/查询按钮）",
+    "description": "参数面板自动摆放 ComboBox / RadioGroup 控件 + FormSubmitButton；数据集 SQL 用 ${参数} 引用。"
+  },
+  "datasets": [
+    {
+      "name": "ds1",
+      "type": "sql",
+      "connection": "FRDemo",
+      "sql": "SELECT 货主地区, 货主城市, 应付金额 FROM 订单 WHERE 货主地区='${地区}' ${if(len(城市)=0,\"\",\"AND 货主城市='\"+城市+\"'\")}"
+    }
+  ],
+  "parameters": [
+    {
+      "name": "地区",
+      "defaultValue": "华东",
+      "defaultType": "text",
+      "widget": { "type": "combo", "label": "地区:", "options": ["华东", "华北", "华南", "西南"] }
+    },
+    {
+      "name": "城市",
+      "defaultValue": "",
+      "defaultType": "text",
+      "widget": { "type": "text", "label": "城市:" }
+    },
+    {
+      "name": "渠道",
+      "defaultValue": "直销",
+      "defaultType": "text",
+      "widget": { "type": "radio", "label": "渠道:", "options": ["直销", "分销", "电商"] }
+    }
+  ],
+  "styles": [
+    { "name": "header", "font": "微软雅黑", "fontStyle": 1, "size": 72, "halign": 2, "border": true, "bg": "-16764052" },
+    { "name": "data",   "font": "微软雅黑", "fontStyle": 0, "size": 72, "halign": 0 }
+  ],
+  "cells": [
+    { "c": 0, "r": 0, "text": "货主地区", "style": "header" },
+    { "c": 1, "r": 0, "text": "货主城市", "style": "header" },
+    { "c": 2, "r": 0, "text": "应付金额", "style": "header" },
+    { "c": 0, "r": 1, "ds": { "dsName": "ds1", "column": "货主地区" }, "dir": 0, "style": "data" },
+    { "c": 1, "r": 1, "ds": { "dsName": "ds1", "column": "货主城市" }, "dir": 0, "style": "data" },
+    { "c": 2, "r": 1, "ds": { "dsName": "ds1", "column": "应付金额", "summary": "sum" }, "dir": 0, "style": "data" }
+  ]
+}

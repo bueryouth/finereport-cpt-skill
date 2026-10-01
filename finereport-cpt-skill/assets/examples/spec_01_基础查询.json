@@ -1,0 +1,36 @@
+{
+  "meta": {
+    "name": "out_01_基础查询",
+    "title": "基础查询：SQL 数据集 + 参数 + 公式 + 命名样式",
+    "description": "最常见的列表报表：一个 SQL 数据集，表头 + 纵向扩展数据列 + 汇总公式 + 合计行。"
+  },
+  "datasets": [
+    {
+      "name": "ds1",
+      "type": "sql",
+      "connection": "FRDemo",
+      "sql": "SELECT 地区, 销量 FROM 销量 WHERE 1=1 ${if(len(地区)=0,\"\",\"AND 地区='\"+地区+\"'\")}"
+    }
+  ],
+  "parameters": [
+    { "name": "地区", "defaultValue": "", "defaultType": "text" }
+  ],
+  "styles": [
+    { "name": "title",  "font": "微软雅黑", "fontStyle": 1, "size": 120, "halign": 2 },
+    { "name": "header", "font": "微软雅黑", "fontStyle": 1, "size": 72,  "halign": 2, "border": true, "bg": "-16764052" },
+    { "name": "data",   "font": "微软雅黑", "fontStyle": 0, "size": 72,  "halign": 0 },
+    { "name": "pct",    "font": "微软雅黑", "fontStyle": 0, "size": 72,  "halign": 2, "format": "0.00%" },
+    { "name": "total",  "font": "微软雅黑", "fontStyle": 1, "size": 72,  "halign": 0, "bg": "-256" }
+  ],
+  "cells": [
+    { "c": 0, "r": 0, "merge": { "cs": 3 }, "text": "各地区销量统计", "style": "title" },
+    { "c": 0, "r": 1, "text": "地区", "style": "header" },
+    { "c": 1, "r": 1, "text": "销量", "style": "header" },
+    { "c": 2, "r": 1, "text": "占比", "style": "header" },
+    { "c": 0, "r": 2, "ds": { "dsName": "ds1", "column": "地区" }, "dir": 0, "style": "data" },
+    { "c": 1, "r": 2, "ds": { "dsName": "ds1", "column": "销量", "summary": "sum" }, "dir": 0, "style": "data" },
+    { "c": 2, "r": 2, "formula": "=B3/SUM(B3)", "style": "pct" },
+    { "c": 0, "r": 3, "merge": { "cs": 2 }, "text": "合计：", "style": "total" },
+    { "c": 2, "r": 3, "formula": "=SUM(B3)", "style": "total" }
+  ]
+}

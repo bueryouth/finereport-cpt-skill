@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WorkBook xmlVersion="20170720" releaseVersion="9.0.0">
+<TableDataMap>
+<TableData name="ds1" class="com.fr.data.impl.DBTableData">
+<Parameters>
+<Parameter>
+<Attributes name="地区"/>
+<O>
+<![CDATA[]]></O>
+</Parameter>
+</Parameters>
+<Attributes maxMemRowCount="-1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[FRDemo]]></DatabaseName>
+</Connection>
+<Query>
+<![CDATA[SELECT * FROM S订单 as 订单
+where 货主地区 is not null
+${if(len(地区)=0,"","and 货主城市 in ('"+SUBSTITUTE(地区,",","','")+"')")} ${if(len(运输方式)=0 || 运输方式=='全部','',"and 运货商='"+运输方式+"'")} ]]></Query>
+</TableData>
+<TableData name="ds2" class="com.fr.data.impl.DBTableData">
+<Parameters/>
+<Attributes maxMemRowCount="-1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[FRDemo]]></DatabaseName>
+</Connection>
+<Query>
+<![CDATA[SELECT distinct 货主地区 FROM S订单 订单 where 货主地区 is not null]]></Query>
+</TableData>
+<TableData name="ds3" class="com.fr.data.impl.DBTableData">
+<Parameters>
+<Parameter>
+<Attributes name="layer1"/>
+<O>
+<![CDATA[]]></O>
+</Parameter>
+</Parameters>
+<Attributes maxMemRowCount="-1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[FRDemo]]></DatabaseName>
+</Connection>
+<Query>
+<![CDATA[SELECT distinct 货主省份 FROM S订单 where 货主地区 = '${layer1}'  and 货主省份 is not null]]></Query>
+</TableData>
+<TableData name="ds4" class="com.fr.data.impl.DBTableData">
+<Parameters>
+<Parameter>
+<Attributes name="layer2"/>
+<O>
+<![CDATA[]]></O>
+</Parameter>
+</Parameters>
+<Attributes maxMemRowCount="-1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[FRDemo]]></DatabaseName>
+</Connection>
+<Query>
+<![CDATA[SELECT distinct 货主城市 FROM S订单 where 货主省份 = '${layer2}']]></Query>
+</TableData>
+</TableDataMap>
+<ElementCaseMobileAttr>
+<ElementCaseMobileAttrProvider horizontal="4" vertical="4" zoom="true" refresh="false" isUseHTML="false" isMobileCanvasSize="false"/>
+</ElementCaseMobileAttr>
+<Report class="com.fr.report.worksheet.WorkSheet" name="sheet1">
+<ReportPageAttr>
+<HR F="0" T="0"/>
+<FR/>
+<HC/>
+<FC/>
+</ReportPageAttr>
+<ColumnPrivilegeControl/>
+<RowPrivilegeControl/>
+<RowHeight defaultValue="723900">
+<![CDATA[1295400,1066800,723900]]></RowHeight>
+<ColumnWidth defaultValue="2743200">
+<![CDATA[3155576,3836894,5181600,4038600,3810000,4114800,2743200,2743200,2743200]]></ColumnWidth>
+<CellElementList>
+<C c="0" r="0" s="0">
+<O>
+<![CDATA[订单号]]></O>
+<PrivilegeControl/>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="1" r="0" s="0">
+<O>
+<![CDATA[客户]]></O>
+<PrivilegeControl/>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="2" r="0" s="0">
+<O>
+<![CDATA[运货商]]></O>
+<PrivilegeControl/>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="3" r="0" s="0">
+<O>
+<![CDATA[地区]]></O>
+<PrivilegeControl/>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="4" r="0" s="0">
+<O>
+<![CDATA[省份]]></O>
+<PrivilegeControl/>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="5" r="0" s="0">
+<O>
+<![CDATA[城市]]></O>
+<PrivilegeControl/>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="0" r="1" s="1">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="订单ID"/>
+<Condition class="com.fr.data.condition.ListCondition"/>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<HighlightList>
+<Highlight class="com.fr.report.cell.cellattr.highlight.DefaultHighlight">
+<Name>
+<![CDATA[条件属性1]]></Name>
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[&A2 % 20 = 0]]></Formula>
+</Condition>
+<HighlightAction class="com.fr.report.cell.cellattr.highlight.PageHighlightAction">
+<P i="1"/>
+</HighlightAction>
+</Highlight>
+<Highlight class="com.fr.report.cell.cellattr.highlight.DefaultHighlight">
+<Name>
+<![CDATA[条件属性2]]></Name>
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[row() % 2! = 0]]></Formula>
+</Condition>
+<HighlightAction class="com.fr.report.cell.cellattr.highlight.BackgroundHighlightAction">
+<Scope val="1"/>
+<Background name="ColorBackground" color="-657158"/>
+</HighlightAction>
+</Highlight>
+</HighlightList>
+<Expand dir="0"/>
+</C>
+<C c="1" r="1" s="1">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="客户ID"/>
+<Condition class="com.fr.data.condition.ListCondition"/>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand dir="0"/>
+</C>
+<C c="2" r="1" s="1">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="运货商"/>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Present class="com.fr.base.present.DictPresent">
+<Dictionary class="com.fr.data.impl.DatabaseDictionary">
+<FormulaDictAttr kiName="运货商ID" viName="公司名称"/>
+<DBDictAttr tableName="运货商" schemaName="" ki="-1" vi="-1" kiName="运货商ID" viName="公司名称"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[FRDemo]]></DatabaseName>
+</Connection>
+</Dictionary>
+</Present>
+<Expand dir="0"/>
+</C>
+<C c="3" r="1" s="1">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="货主地区"/>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand dir="0"/>
+</C>
+<C c="4" r="1" s="1">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="货主省份"/>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand dir="0"/>
+</C>
+<C c="5" r="1" s="1">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="货主城市"/>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand dir="0"/>
+</C>
+</CellElementList>
+<ReportAttrSet>
+<ReportSettings headerHeight="0" footerHeight="0">
+<PaperSetting>
+<PaperSize width="40320000" height="42768000"/>
+<Margin top="288000" left="576000" bottom="288000" right="576000"/>
+</PaperSetting>
+</ReportSettings>
+<Header reportPageType="0">
+<Background name="NullBackground"/>
+<LeftList/>
+<CenterList/>
+<RightList/>
+</Header>
+<Footer reportPageType="0">
+<Background name="NullBackground"/>
+<LeftList/>
+<CenterList/>
+<RightList/>
+</Footer>
+</ReportAttrSet>
+<PrivilegeControl/>
+</Report>
+<ReportParameterAttr>
+<Attributes showWindow="true" delayPlaying="false" windowPosition="1" align="0" useParamsTemplate="false"/>
+<PWTitle>
+<![CDATA[参数]]></PWTitle>
+<ParameterUI class="com.fr.form.main.parameter.FormParameterUI">
+<Parameters/>
+<Layout class="com.fr.form.ui.container.WParameterLayout">
+<WidgetName name="para"/>
+<WidgetAttr description="">
+<PrivilegeControl/>
+</WidgetAttr>
+<Margin top="1" left="1" bottom="1" right="1"/>
+<Border>
+<border style="0" color="-723724" borderRadius="0" type="0" borderStyle="0"/>
+<WidgetTitle>
+<O>
+<![CDATA[新建标题]]></O>
+<FRFont name="SimSun" style="0" size="72"/>
+<Position pos="0"/>
+</WidgetTitle>
+<Alpha alpha="1.0"/>
+</Border>
+<Background name="ColorBackground" color="-1118482"/>
+<LCAttr vgap="0" hgap="0" compInterval="0"/>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.parameter.FormSubmitButton">
+<WidgetName name="Search"/>
+<WidgetAttr description="">
+<PrivilegeControl/>
+</WidgetAttr>
+<Text>
+<![CDATA[查询]]></Text>
+<Hotkeys>
+<![CDATA[enter]]></Hotkeys>
+</InnerWidget>
+<BoundsAttr x="455" y="52" width="129" height="21"/>
+</Widget>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.ui.TreeComboBoxEditor">
+<WidgetName name="地区"/>
+<LabelName name="地区:"/>
+<WidgetAttr description="">
+<PrivilegeControl/>
+</WidgetAttr>
+<TreeAttr mutiSelect="true" selectLeafOnly="true"/>
+<isLayerBuild isLayerBuild="false"/>
+<TreeNodeAttr>
+<Dictionary class="com.fr.data.impl.TableDataDictionary">
+<FormulaDictAttr kiName="货主地区" viName="货主地区"/>
+<TableDataDictAttr>
+<TableData class="com.fr.data.impl.NameTableData">
+<Name>
+<![CDATA[ds2]]></Name>
+</TableData>
+</TableDataDictAttr>
+</Dictionary>
+</TreeNodeAttr>
+<TreeNodeAttr>
+<Dictionary class="com.fr.data.impl.TableDataDictionary">
+<FormulaDictAttr kiName="货主省份" viName="货主省份"/>
+<TableDataDictAttr>
+<TableData class="com.fr.data.impl.NameTableData">
+<Name>
+<![CDATA[ds3]]></Name>
+</TableData>
+</TableDataDictAttr>
+</Dictionary>
+</TreeNodeAttr>
+<TreeNodeAttr>
+<Dictionary class="com.fr.data.impl.TableDataDictionary">
+<FormulaDictAttr kiName="货主城市" viName="货主城市"/>
+<TableDataDictAttr>
+<TableData class="com.fr.data.impl.NameTableData">
+<Name>
+<![CDATA[ds4]]></Name>
+</TableData>
+</TableDataDictAttr>
+</Dictionary>
+</TreeNodeAttr>
+<isAutoBuild autoBuild="false"/>
+<isPerformanceFirst performanceFirst="false"/>
+<widgetValue>
+<O>
+<![CDATA[]]></O>
+</widgetValue>
+</InnerWidget>
+<BoundsAttr x="200" y="52" width="145" height="21"/>
+</Widget>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.ui.Label">
+<WidgetName name="L地区"/>
+<WidgetAttr description="">
+<PrivilegeControl/>
+</WidgetAttr>
+<widgetValue>
+<O>
+<![CDATA[地区:]]></O>
+</widgetValue>
+<LabelAttr verticalcenter="true" textalign="0" autoline="true"/>
+<FRFont name="SimSun" style="0" size="72"/>
+<border style="0" color="-723724"/>
+</InnerWidget>
+<BoundsAttr x="162" y="52" width="38" height="21"/>
+</Widget>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.ui.Label">
+<WidgetName name="L运输"/>
+<WidgetAttr description=""><PrivilegeControl/></WidgetAttr>
+<widgetValue><O><![CDATA[运输方式:]]></O></widgetValue>
+<LabelAttr verticalcenter="true" textalign="0" autoline="true"/>
+<FRFont name="SimSun" style="0" size="72"/>
+<border style="0" color="-723724"/>
+</InnerWidget>
+<BoundsAttr x="360" y="52" width="60" height="21"/>
+</Widget>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.ui.ComboBox">
+<WidgetName name="运输方式"/>
+<WidgetAttr description=""><PrivilegeControl/></WidgetAttr>
+<Dictionary class="com.fr.data.impl.CustomDictionary"><CustomDictAttr><Dict key="全部" value="全部"/><Dict key="顺丰" value="顺丰"/><Dict key="快递" value="快递"/></CustomDictAttr></Dictionary>
+<widgetValue><O><![CDATA[全部]]></O></widgetValue>
+</InnerWidget>
+<BoundsAttr x="422" y="52" width="90" height="21"/>
+</Widget>
+<Sorted sorted="false"/>
+<MobileWidgetList>
+<Widget widgetName="地区"/>
+<Widget widgetName="Search"/>
+</MobileWidgetList>
+<Display display="true"/>
+<DelayDisplayContent delay="false"/>
+<UseParamsTemplate use="false"/>
+<Position position="0"/>
+<Design_Width design_width="960"/>
+<NameTagModified/>
+<WidgetNameTagMap>
+<NameTag name="地区" tag="地区:"/>
+</WidgetNameTagMap>
+</Layout>
+<DesignAttr width="960" height="103"/>
+</ParameterUI>
+<Parameter>
+<Attributes name="运输方式"/>
+<O><![CDATA[全部]]></O>
+</Parameter>
+</ReportParameterAttr>
+<StyleList>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="Microsoft YaHei UI" style="0" size="80" foreground="-1"/>
+<Background name="ColorBackground" color="-6697729"/>
+<Border/>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="Microsoft YaHei UI" style="0" size="72" foreground="-13421773"/>
+<Background name="ColorBackground" color="-1"/>
+<Border>
+<Top style="1" color="-3024920"/>
+<Bottom style="1" color="-3024920"/>
+<Left style="1" color="-3024920"/>
+<Right style="1" color="-3024920"/>
+</Border>
+</Style>
+</StyleList>
+<DesignerVersion DesignerVersion="JAA"/>
+<PreviewType PreviewType="0"/>
+<TemplateID TemplateID="b367793c-93a5-4614-bbd8-a0dcb821fcf9"/>
+<TemplateIdAttMark class="com.fr.base.iofileattr.TemplateIdAttrMark">
+<TemplateIdAttMark TemplateId="b551bbb2-34e7-4215-aab3-538d817a36c6"/>
+</TemplateIdAttMark>
+</WorkBook>

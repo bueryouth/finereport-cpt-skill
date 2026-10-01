@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WorkBook xmlVersion="20170720" releaseVersion="11.0.0">
+<TableDataMap>
+<TableData name="ds1" class="com.fr.data.impl.DBTableData">
+<Parameters/>
+<Attributes maxMemRowCount="-1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[FRDemo]]></DatabaseName>
+</Connection>
+<Query>
+<![CDATA[SELECT * FROM 客户]]></Query>
+<PageQuery>
+<![CDATA[]]></PageQuery>
+</TableData>
+</TableDataMap>
+<ReportWebAttr>
+<ServerPrinter/>
+<WebPageContent><ToolBars/><WebPage isPage="false" isShowAsImage="false" isAutoScale="false" isTDHeavy="false"/></WebPageContent>
+<Listeners><Listener event="afterload"><JavaScript class="com.fr.js.JavaScriptImpl"><Parameters/><Content><![CDATA[FR.Msg.toast('报表加载结束(afterload)：客户信息表已就绪');]]></Content></JavaScript></Listener></Listeners>
+</ReportWebAttr>
+<Report class="com.fr.report.worksheet.WorkSheet" name="sheet1">
+<ReportPageAttr>
+<HR F="0" T="1"/>
+<FR/>
+<HC/>
+<FC/>
+</ReportPageAttr>
+<ColumnPrivilegeControl/>
+<RowPrivilegeControl/>
+<RowHeight defaultValue="723900">
+<![CDATA[723900,279400,864000,864000,723900,723900,723900,723900,723900,723900,723900]]></RowHeight>
+<ColumnWidth defaultValue="2743200">
+<![CDATA[914400,4140200,2921000,2997200,4470400,2387600,3302000,2540000,2743200,2743200,2743200]]></ColumnWidth>
+<CellElementList>
+<C c="0" r="0" cs="2">
+<PrivilegeControl/>
+<Widget class="com.fr.form.ui.FreeButton">
+<Listener event="afterinit">
+<JavaScript class="com.fr.js.JavaScriptImpl">
+<Parameters/>
+<Content>
+<![CDATA[window.ceshi=[]A;]]></Content>
+</JavaScript>
+</Listener>
+<Listener event="click">
+<JavaScript class="com.fr.js.JavaScriptImpl">
+<Parameters/>
+<Content>
+<![CDATA[window.parent.form.getWidgetByName("公司名称").setValue(ceshi);//给参数赋值 
+window.parent.FR.closeDialog();//确定获取值后，关闭取消父窗口的对话框 
+window.parent.FR.destroyDialog();]]></Content>
+</JavaScript>
+</Listener>
+<WidgetAttr aspectRatioLocked="false" aspectRatioBackup="0.0" description="">
+<MobileBookMark useBookMark="false" bookMarkName="" frozen="false"/>
+<PrivilegeControl/>
+</WidgetAttr>
+<Text>
+<![CDATA[处理已选中记录]]></Text>
+<Hotkeys>
+<![CDATA[]]></Hotkeys>
+</Widget>
+<Expand/>
+</C>
+<C c="0" r="2" cs="2" s="0">
+<O>
+<![CDATA[客户]]></O>
+<PrivilegeControl/>
+<Expand/>
+<NameJavaScriptGroup><NameJavaScript name="客户帮助"><JavaScript class="com.fr.js.WebHyperlink"><JavaScript class="com.fr.js.WebHyperlink"><Parameters/><TargetFrame><![CDATA[_blank]]></TargetFrame><Features width="600" height="400"/><URL><![CDATA[https://www.finereport.com]]></URL></JavaScript></JavaScript></NameJavaScript></NameJavaScriptGroup>
+</C>
+<C c="2" r="2" s="0">
+<O>
+<![CDATA[联系人姓名]]></O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="3" r="2" s="0">
+<O>
+<![CDATA[联系人职务]]></O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="4" r="2" s="0">
+<O>
+<![CDATA[地址]]></O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="5" r="2" s="0">
+<O>
+<![CDATA[城市]]></O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="6" r="2" s="0">
+<O>
+<![CDATA[City]]></O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="7" r="2" s="0">
+<O>
+<![CDATA[地区]]></O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="0" r="3" s="1">
+<PrivilegeControl/>
+<Widget class="com.fr.form.ui.CheckBox">
+<Listener event="statechange">
+<JavaScript class="com.fr.js.JavaScriptImpl">
+<Parameters>
+<Parameter>
+<Attributes name="a"/>
+<O t="XMLable" class="com.fr.base.Formula">
+<Attributes>
+<![CDATA[=B4]]></Attributes>
+</O>
+</Parameter>
+</Parameters>
+<Content>
+<![CDATA[var value = this.getValue();//获取当前参数的值 
+if (value == true) {
+ ceshi.push(a);//将选中的参数a放入窗口 
+} 
+else if (value==false){
+ ceshi.splice($.inArray(a,ceshi),1); 
+}]]></Content>
+</JavaScript>
+</Listener>
+<WidgetAttr aspectRatioLocked="false" aspectRatioBackup="0.0" description="">
+<MobileBookMark useBookMark="false" bookMarkName="" frozen="false"/>
+<PrivilegeControl/>
+</WidgetAttr>
+<Text>
+<![CDATA[]]></Text>
+<Hotkeys>
+<![CDATA[]]></Hotkeys>
+<widgetValue>
+<O t="B">
+<![CDATA[false]]></O>
+</widgetValue>
+</Widget>
+<Expand leftParentDefault="false" left="B4"/>
+</C>
+<C c="1" r="3" s="1">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="客户ID"/>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Present class="com.fr.base.present.DictPresent">
+<Dictionary class="com.fr.data.impl.TableDataDictionary">
+<FormulaDictAttr kiName="客户ID" viName="公司名称"/>
+<TableDataDictAttr>
+<TableData class="com.fr.data.impl.NameTableData">
+<Name>
+<![CDATA[ds1]]></Name>
+</TableData>
+</TableDataDictAttr>
+</Dictionary>
+</Present>
+<Expand dir="0"/>
+</C>
+<C c="2" r="3" s="1">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="联系人姓名"/>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand dir="0"/>
+</C>
+<C c="3" r="3" s="1">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="联系人职务"/>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand dir="0"/>
+</C>
+<C c="4" r="3" s="1">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="地址"/>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand dir="0"/>
+</C>
+<C c="5" r="3" s="1">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="城市"/>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand dir="0"/>
+</C>
+<C c="6" r="3" s="1">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="City"/>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand dir="0"/>
+</C>
+<C c="7" r="3" s="1">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="地区"/>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand dir="0"/>
+</C>
+</CellElementList>
+<ReportAttrSet>
+<ReportSettings headerHeight="0" footerHeight="0">
+<FrozenColumnRow columnrow="A3"/>
+<PaperSetting/>
+<FollowingTheme background="false"/>
+<Background name="ColorBackground">
+<color>
+<FineColor color="-1" hor="-1" ver="-1"/>
+</color>
+</Background>
+</ReportSettings>
+</ReportAttrSet>
+<PrivilegeControl/>
+</Report>
+<ReportParameterAttr>
+<Attributes showWindow="true" delayPlaying="true" windowPosition="1" align="0" useParamsTemplate="true" currentIndex="0"/>
+<PWTitle>
+<![CDATA[参数]]></PWTitle>
+</ReportParameterAttr>
+<StyleList>
+<Style style_name="Head" full="true" horizontal_alignment="0" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="ImageBackground" layout="2">
+<FineImage fm="png">
+<IM>
+<![CDATA[!Q"h"s+sQI7h#eD$31&+%7s)Y;?-[t%fcS0'F4mC!!&3S\C(?W!/X985u`*!mF8rZ!FZ[mdJ
+No=a%1@h_DK4?Th+3iLAPnbcJn3*eJG^HS,cRZlN#j-R0V*W4Fed@!AlMATS[po:!<]AQ''&q
+S!*(c/johW?rq]AB?Wn:%l"K74Fl&bsGYo0\N:_i;F8q<r*qCr#N@^/-F5ZK?G@ffUuGFT;=.
+TZKo!NNm.OB:@7P:"i\!!!!j78?7R6=>B~
+]]></IM>
+</FineImage>
+</Background>
+<Border>
+<Top style="1">
+<color>
+<FineColor color="-6697729" hor="-1" ver="-1"/>
+</color>
+</Top>
+<Bottom style="1">
+<color>
+<FineColor color="-6697729" hor="-1" ver="-1"/>
+</color>
+</Bottom>
+<Left style="1">
+<color>
+<FineColor color="-6697729" hor="-1" ver="-1"/>
+</color>
+</Left>
+<Right style="1">
+<color>
+<FineColor color="-6697729" hor="-1" ver="-1"/>
+</color>
+</Right>
+</Border>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="ColorBackground">
+<color>
+<FineColor color="-1" hor="-1" ver="-1"/>
+</color>
+</Background>
+<Border>
+<Top style="1">
+<color>
+<FineColor color="-6697729" hor="-1" ver="-1"/>
+</color>
+</Top>
+<Bottom style="1">
+<color>
+<FineColor color="-6697729" hor="-1" ver="-1"/>
+</color>
+</Bottom>
+<Left style="1">
+<color>
+<FineColor color="-6697729" hor="-1" ver="-1"/>
+</color>
+</Left>
+<Right style="1">
+<color>
+<FineColor color="-6697729" hor="-1" ver="-1"/>
+</color>
+</Right>
+</Border>
+</Style>
+</StyleList>
+<DesignerVersion DesignerVersion="LAA"/>
+<PreviewType PreviewType="1"/>
+<TemplateThemeAttrMark class="com.fr.base.iofile.attr.TemplateThemeAttrMark">
+<TemplateThemeAttrMark name="兼容主题" dark="false"/>
+</TemplateThemeAttrMark>
+<StrategyConfigsAttr class="com.fr.esd.core.strategy.persistence.StrategyConfigsAttr">
+<StrategyConfigs>
+<StrategyConfig dsName="ds1" enabled="false" useGlobal="true" shouldMonitor="true" shouldEvolve="false" scheduleBySchema="false" timeToLive="1500000" timeToIdle="86400000" updateInterval="1500000" terminalTime="" updateSchema="0 0 8 * * ? *" activeInitiation="false"/>
+</StrategyConfigs>
+</StrategyConfigsAttr>
+<TemplateIdAttMark class="com.fr.base.iofile.attr.TemplateIdAttrMark">
+<TemplateIdAttMark TemplateId="94044ba1-df63-4125-8fd8-8523f3f36488"/>
+</TemplateIdAttMark>
+</WorkBook>

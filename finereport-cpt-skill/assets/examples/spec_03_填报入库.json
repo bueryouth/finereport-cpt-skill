@@ -1,0 +1,50 @@
+{
+  "meta": {
+    "name": "out_03_填报入库",
+    "title": "填报入库：填报预览 + 智能提交 BuiltInSQLSubmiter",
+    "description": "可录入单元格（文本/数字控件），提交时按主键智能 INSERT/UPDATE 到目标表。"
+  },
+  "workbook": { "previewType": "1" },
+  "datasets": [
+    {
+      "name": "ds1",
+      "type": "sql",
+      "connection": "FRDemo",
+      "sql": "SELECT 月份, 产品名称, 销量 FROM 月销量录入"
+    }
+  ],
+  "styles": [
+    { "name": "header", "font": "微软雅黑", "fontStyle": 1, "size": 72, "halign": 2, "border": true, "bg": "-16764052" },
+    { "name": "input",  "font": "微软雅黑", "fontStyle": 0, "size": 72, "halign": 0, "border": true, "bg": "-1" }
+  ],
+  "cells": [
+    { "c": 0, "r": 0, "text": "月份", "style": "header" },
+    { "c": 1, "r": 0, "text": "产品名称", "style": "header" },
+    { "c": 2, "r": 0, "text": "销量", "style": "header" },
+
+    { "c": 0, "r": 1, "text": "2026-10", "style": "input" },
+    { "c": 1, "r": 1, "widget": { "type": "text", "name": "inp_product", "defaultValue": "" }, "style": "input" },
+    { "c": 2, "r": 1, "widget": { "type": "number", "name": "inp_qty", "defaultValue": "0", "defaultType": "int" }, "style": "input" },
+
+    { "c": 0, "r": 2, "ds": { "dsName": "ds1", "column": "月份" }, "dir": 0, "style": "input" },
+    { "c": 1, "r": 2, "ds": { "dsName": "ds1", "column": "产品名称" }, "dir": 0, "style": "input" },
+    { "c": 2, "r": 2, "ds": { "dsName": "ds1", "column": "销量" }, "dir": 0, "style": "input" }
+  ],
+  "toolbar": { "buttons": ["submit", "verify", "append", "delete"] },
+  "buttons": [
+    { "name": "btn_help", "text": "填写说明", "js": "FR.Msg.toast('请逐行录入，带 * 为主键列');" }
+  ],
+  "fill": {
+    "enabled": true,
+    "name": "内置SQL1",
+    "connection": "FRDemo",
+    "table": "月销量录入",
+    "schema": "",
+    "columns": [
+      { "name": "月份", "isKey": true,     "source": { "kind": "cell", "c": 0, "r": 2 } },
+      { "name": "产品名称", "isKey": true, "source": { "kind": "cell", "c": 1, "r": 2 } },
+      { "name": "销量", "isKey": false,    "source": { "kind": "cell", "c": 2, "r": 2 } }
+    ],
+    "conditionFormula": "len(C3)!=0"
+  }
+}
